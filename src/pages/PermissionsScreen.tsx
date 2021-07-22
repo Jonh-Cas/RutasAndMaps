@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { View, Text, StyleSheet, Button, Platform } from 'react-native'
 import { check, PERMISSIONS, PermissionStatus, request } from 'react-native-permissions'
+import BlackBoton from '../components/BlackBoton';
 import { PermissionsContext } from '../context/PermissionContext';
 
 const PermissionsScreen = () => {
@@ -10,12 +11,13 @@ const PermissionsScreen = () => {
 
     return (
         <View style={styles.container} >
-            <Text>Permissions Screen</Text>
-            <Button 
-             title='Permiso'
-             onPress={ askLocationPermissions }
+            <Text style={styles.title} >Es necesario  el uso del GPS  para el usar  esta aplicación </Text>
+
+            <BlackBoton 
+                title='Permiso'
+                onPress={ askLocationPermissions }
             />
-            <Text> 
+            <Text style={{ marginTop: 20, }} > 
                 {JSON.stringify(permissions, null, 5) }    
             </Text>
 
@@ -31,5 +33,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
 
-   }, 
+   },
+   title: {
+       width: 200,
+       fontSize: 18,
+       textAlign: 'center',
+       marginBottom: 20,
+   } 
 });
